@@ -145,12 +145,12 @@ function main() {
 
   // if time is currently 1pm
   // set 12pm and 2pm stikc slightly above
-  // set all other stick to false
+  // set all other lines to false
 
 
 
 
-  //set the current stick to active
+  //set the current line to active
   line[time].classList.add("active")
 
   let transitionString = 'transform 0.1s ease-out';
