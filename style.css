@@ -6,11 +6,33 @@ Pale Turquoise #B8E0F6
 ‍Light Slate Grey #7B92AA
 */
 
-body {
+:root {
+  --dayColor: #ff9823;
+  --ftNightColor: #EE6C4D;
+  --bgDayColor: #ffe2a5;
+  --bgNightColor:#1C2838;
+  --regularFtNightColor: #E0FBFC;
+  --bgDayColor_v2: #fff7f0;
+  --bgDayColor_v3: #fcecc8;
+  --hyperlinkNight: #28aa00;;
+}
+
+body, html {
+  margin:0;
+  padding:0;
   font-family: 'Varela Round';
-  font-size: 22px;
+  font-size: 1rem;
+}
+
+.bodyWrapper {
   display: flex;
-  height: 100%;
+  flex-direction: row;
+}
+
+ul{
+  list-style:none;
+  padding:0;
+  margin:0
 }
 
 main {
@@ -22,22 +44,27 @@ main {
 
 /*Header section - Introduction*/
 .orangeColor{
-  color: #ff9823;
+  color: var(--dayColor);
 }
 
 header {
   display: flex;
   justify-content: center;
   flex-direction: column;
-  padding: 0 150px;
-  max-width: 1440px;
+  padding: 0 300px;
   /* margin: 0 auto; */
   height: 100vh;
-  background-color: #fff7f0;
+  background-color: var(--bgDayColor_v2);
+}
+
+.headerTop {
+  flex:5;
+  margin-top: 25%;
 }
 
 .headerBottom {
-  margin-top: 50px;  
+  flex:2;
+  margin-top: 10%;
 }
 
 .intro_font_above_my_name {
@@ -84,6 +111,7 @@ header {
   gap: 25px;
   justify-content: center;
   flex-direction: row;
+  background-color: var(--bgDayColor_v2);
   /*justify-content: center;
   align-items: center;*/
 }
@@ -116,6 +144,7 @@ p {
 }
 
 h6 {
+  font-size: 1rem;
   margin-block-start: 0;
   margin-block-end: 10px;
   font-weight: 600;
@@ -128,7 +157,7 @@ h6 {
 h5 {
   margin-block-start: 0;
   font-size: 1.25rem;
-  color: #ff9823;
+  color: var(--dayColor);
 }
 
 .experienceContainer {
@@ -169,13 +198,13 @@ h5 {
   gap: 10px;
   /*height: 101vh;*/
   flex-direction: column;
-  background-color: #ffe2a5;
+  background-color: var(--bgDayColor_v3);
   /*justify-content: center;
   align-items: center;*/
 }
 
 .projectTitle {
-  color: #ff9823;
+  color: var(--dayColor);
 }
 
 .projectDescription {
@@ -213,37 +242,33 @@ h5 {
 
 .leftSide {
   flex: 1;
+  background-color: var(--bgDayColor_v2);
 }
 
-.leftSideStyleElements{
+ul.leftSideStyle {
   display: flex;
   flex-direction: column;
-  gap: 25px;
-  width: 40px;
+  justify-content: center;
+  gap: 5px;
   position: fixed;
   bottom: 50px;
-  left: 33px;
+  left: 22px;
   z-index: 10;
 }
 
 .rightSide {
   flex: 1;
   /* width: 5%; */
-  background-color: #fcecc8;
+  background-color: var(--bgDayColor_v3);
   writing-mode: vertical-rl;
   text-orientation: mixed;
 }
 
 .rightSideStyleElements{
-  display: flex;
-  flex-direction: column;
-  gap: 25px;
-  width: 40px;
   position: fixed;
-  bottom: 50px;
-  right: 40px;
+  bottom: 60px;
+  right: 30px;
   z-index: 10;
-
 }
 
 .round_portrait {
@@ -271,33 +296,41 @@ li{
 
 div > a {
   text-decoration: none;
+  color: var(--dayColor);
   font-size: 1rem;
 }
 
+.darkMode div > a {
+  text-decoration: none;
+  color: var(--hyperlinkNight);
+  font-size: 1rem;
+}
+
+.highlight-link {
+  color: var(--dayColor);
+}
+
+body.darkMode .highlight-link {
+  color: var(--hyperlinkNight);
+}
+
 /*Dark mode*/
-body.darkMode .rightSide{
-  background-color: #0F1E32;
-}
-
-body.darkMode .leftSide, body.darkMode .section2{
-  background-color: #283A51;
-}
-
-body.darkMode header{
-  background-color: #1C2838;
+body.darkMode .rightSide, body.darkMode header, body.darkMode .section3, body.darkMode .section2,body.darkMode .leftSide {
+  background-color: var(--bgNightColor); 
 }
 
 body.darkMode {
-  color: #E0FBFC;
+  color: var(--regularFtNightColor);
 }
 
 body.darkMode .orangeColor, body.darkMode h5, body.darkMode .projectTitle{
-  color: #EE6C4D;
+  color: var(--ftNightColor);
 }
 
-body.darkMode .section3 {
-  background-color: #18273A;
+body.darkMode .line {
+  background: var(--ftNightColor);
 }
+
 
 .lineWrapper {
   display: flex;
@@ -335,13 +368,12 @@ body.darkMode .section3 {
   justify-content: center;
   position: relative;
   overflow: hidden;
-
 }
 
 .line {
   height: 50px;
   width: 5px;
-  background: hsl(42, 100%, 50%);
+  background: var(--dayColor);
   transform: translate3d(0,25px,0);
   /* transition: transform 1s var(--curve),opacity .3s linear; */
   border-radius: 20px;

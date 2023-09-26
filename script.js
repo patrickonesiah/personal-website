@@ -61,8 +61,6 @@ function setDarkMode(){
 
 
 
-
-
 function addElement(currentActive) {
   let labelDayNight;
   // create a new div element
@@ -224,16 +222,3 @@ function main() {
     });
   }
 }
-
-
-
-// I created a basic javascript where the website theme is set by the time of the day. User is also able to set the website theme by manually selecting the time
-
-
-// Setting width and height. How do I determine?
-// If I dont set any width and height. Does that
-// Height of the viewport 
-// Flex
-// How do I know which method is best? using a table? or div? or flex?
-
-// Setting the width and height? How do I determine for the elements? For example, should I be setting it in the body element?
