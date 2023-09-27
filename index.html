@@ -2,12 +2,13 @@
 <html lang="en">
 
 <head>
-  <link rel="stylesheet" href="./style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <style>
     @import url('https://fonts.googleapis.com/css?family=Varela Round');
   </style>
   <title>My Personal Website</title>
   <script src="https://unpkg.com/scrollreveal"></script>
+  <link rel="stylesheet" href="./style.css">
 </head>
 
 <body>
@@ -236,9 +237,40 @@
       <!-- Header/Hero Section End -->
 
       <!-- About me/Skills and Experience Section -->
+
+            <!-- Need to structure it properly next time -->
+      <!-- <section class="section2_aboutMe">
+        <div >
+          <h5>ABOUT ME</h5>
+        </div>
+        <div class="aboutMeContent">
+
+          <div class="section_left">
+            <div class="round_portrait">
+              <img src="./img/profileImage.jpg" alt="Profile image">
+            </div>
+          </div>
+
+          <div class="section_right">
+            <p>Hey there!</p>
+            <br> 
+            <p>I'm both a Software Engineer and a Quality Engineer, and I've got a solid two-year background in mobile app testing. But what makes me a bit different is my diverse experience in IT, web, and graphic design. I'm genuinely excited to use this unique blend of skills to make sure web/mobile applications not only work flawlessly but also look great.</p>
+            <br>
+            <p>Lately, I've been feeling a growing curiosity about web development and a hunger to expand my knowledge in software testing. Plus, my graphic design background gives me a broader perspective on how to approach testing and software development.</p>
+            <br>
+            <p>When I'm not in work mode, you'll find me exploring new places, drawing, binge-watching Sci-Fi/Superhero TV series, and enjoying quality time with my family.</p>
+            <br>
+          </div>  
+
+        </div>
+
+
+      </section> -->
+      
+
       <section class="section2">
         <div class="section_left">
-          <h5>ABOUT ME</h5>
+          <h5 class="aboutMe">ABOUT ME</h5>
           <div class="round_portrait">
             <img src="./img/profileImage.jpg" alt="Profile image">
           </div>
@@ -259,9 +291,6 @@
       <section class="section2">
         <div class="section_left">
           <h5>SKILLS</h5>
-          <!-- <div class="round_portrait">
-            <img src="./img/profileImage.jpg" alt="Profile image">
-          </div> -->
         </div>
         <div class="section_right">
           <div class="skills">
@@ -412,64 +441,66 @@
       <!-- About me/Skills and Experience Section End -->
 
       <!-- Projects Section -->
-      <section class="section3">
-        <h5 class="projectTitle">PROJECTS</h5>
-
-        <div class="projectRow">
-
-          <div class="projectImages">
-            <img class="projectImageSize"
-              src="https://uploads-ssl.webflow.com/5e3de80322b300854230f11f/5ec704936d4b915eaf48b893_hero-invest-full.jpg"
-              alt="My first project">
-          </div>
-
-          <div class="projectBlurb">
-            <h6 class="projectTitle">PROJECT NAME</h6>
-            <p class="projectDescription">
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsa ut temporibus fugit, ipsam eveniet harum
-              saepe, laudantium sed id commodi officiis, tempora amet ab vel minus quia error. Adipisci, sed?
-            </p>
-            <a href="#" class="projectLink">Project link</a>
-          </div>
-
+      <section class="section3_projects">
+        <div class="projectTitle">
+          <h5>PROJECTS</h5>
         </div>
+        <div class="sectionContent">
+          <div class="projectRow">
 
-        <div class="projectRow">
+            <div class="projectImages">
+              <img class="projectImageSize"
+                src="https://uploads-ssl.webflow.com/5e3de80322b300854230f11f/5ec704936d4b915eaf48b893_hero-invest-full.jpg"
+                alt="My first project">
+            </div>
 
-          <div class="projectImages">
-            <img class="projectImageSize" src="./img/imageOne.jpg" alt="My first project">
+            <div class="projectBlurb">
+              <h6 class="projectTitle">PROJECT NAME</h6>
+              <p class="projectDescription">
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsa ut temporibus fugit, ipsam eveniet harum
+                saepe, laudantium sed id commodi officiis, tempora amet ab vel minus quia error. Adipisci, sed?
+              </p>
+              <a href="#" class="projectLink">Project link</a>
+            </div>
+
           </div>
 
-          <div class="projectBlurb">
-            <h6 class="projectTitle">PROJECT NAME</h6>
-            <p class="projectDescription">
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsa ut temporibus fugit, ipsam eveniet harum
-              saepe, laudantium sed id commodi officiis, tempora amet ab vel minus quia error. Adipisci, sed?
-            </p>
-            <a href="#" class="projectLink">Project link</a>
+          <div class="projectRow">
+
+            <div class="projectImages">
+              <img class="projectImageSize" src="./img/imageOne.jpg" alt="My first project">
+            </div>
+
+            <div class="projectBlurb">
+              <h6 class="projectTitle">PROJECT NAME</h6>
+              <p class="projectDescription">
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsa ut temporibus fugit, ipsam eveniet harum
+                saepe, laudantium sed id commodi officiis, tempora amet ab vel minus quia error. Adipisci, sed?
+              </p>
+              <a href="#" class="projectLink">Project link</a>
+            </div>
+
           </div>
 
+          <div class="projectRow">
+
+            <div class="projectImages">
+              <img class="projectImageSize"
+                src="https://scenelab.io/static/f7993b1a90630c3367d23f9c8d8bd93c/078c0/app_promo_mockup.jpg"
+                alt="My first project">
+            </div>
+
+            <div class="projectBlurb">
+              <h6 class="projectTitle">PROJECT NAME</h6>
+              <p class="projectDescription">
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsa ut temporibus fugit, ipsam eveniet harum
+                saepe, laudantium sed id commodi officiis, tempora amet ab vel minus quia error. Adipisci, sed?
+              </p>
+              <a href="#" class="projectLink">Project link</a>
+            </div>
+
+          </div>
         </div>
-
-        <div class="projectRow">
-
-          <div class="projectImages">
-            <img class="projectImageSize"
-              src="https://scenelab.io/static/f7993b1a90630c3367d23f9c8d8bd93c/078c0/app_promo_mockup.jpg"
-              alt="My first project">
-          </div>
-
-          <div class="projectBlurb">
-            <h6 class="projectTitle">PROJECT NAME</h6>
-            <p class="projectDescription">
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsa ut temporibus fugit, ipsam eveniet harum
-              saepe, laudantium sed id commodi officiis, tempora amet ab vel minus quia error. Adipisci, sed?
-            </p>
-            <a href="#" class="projectLink">Project link</a>
-          </div>
-
-        </div>
-
 
       </section>
       <!-- Projects Section End -->
