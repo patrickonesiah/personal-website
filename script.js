@@ -1,6 +1,7 @@
 // Initialize varaibles, arrays and get elements
 const today = new Date();
 const time = today.getHours();
+const minutes = today.getMinutes();
 const dayTime = 7;
 const nightTime = 18;
 
@@ -74,14 +75,14 @@ function addElement(currentActive) {
   const newDiv = document.createElement("div");
 
   //Check if the hour is before or after 12
-  let amPm = currentActive >= 12 ? 'pm' : 'am';
+  let amPm = currentActive >= 12 ? 'PM' : 'AM';
 
   //Whatever remains is the hour
   let hour = (currentActive % 12) || 12;
 
   //Set the label to current time
   if (currentActive >= dayTime && currentActive <= nightTime) {
-    labelDayNight = `${hour}:00${amPm}`;
+    labelDayNight = `${hour}:${minutes}${amPm}`;
   }
   else {
     labelDayNight = "Night";
