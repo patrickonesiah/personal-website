@@ -1,6 +1,8 @@
 // Initialize varaibles, arrays and get elements
 const today = new Date();
 const time = today.getHours();
+const dayTime = 7;
+const nightTime = 18;
 
 let activeArray = [];
 
@@ -63,15 +65,21 @@ function setDarkMode(){
 }
 
 
+
 //Add an element to the top of the active line
 function addElement(currentActive) {
   let labelDayNight;
   // create a new div element
   const newDiv = document.createElement("div");
 
+  //
+  let amPm = currentActive >= 12 ? 'pm' : 'am';
+
+  let hour = (currentActive % 12) || 12;
+
   // and give it some content
-  if (currentActive >= 5 && currentActive <= 18) {
-    labelDayNight = `${currentActive}00`;
+  if (currentActive >= dayTime && currentActive <= nightTime) {
+    labelDayNight = `${hour}:00${amPm}`;
   }
   else {
     labelDayNight = "Night";
@@ -119,7 +127,7 @@ function clickOnLine(){
         }
         addElement(currentActive)
       }
-      if (index >= 5 && index < 19) {
+      if (index >= dayTime && index <= nightTime) {
         body.classList.remove('darkMode');
         setLightMode()
       }
