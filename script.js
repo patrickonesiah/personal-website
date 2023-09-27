@@ -1,3 +1,4 @@
+// Initialize varaibles, arrays and get elements
 const today = new Date();
 const time = today.getHours();
 
@@ -9,11 +10,11 @@ const circle = document.getElementsByTagName('circle');
 const mouseTarget = document.getElementsByClassName("hour");
 const line = document.getElementsByClassName("line");
 
+
 clickOnLine()
 main();
 
-
-
+// Get current time to switch website's theme color to dark or light mode
 function getCurrentTime() {
   if (time >= 5 && time <= 18) {
     body.classList.remove('darkMode');
@@ -24,7 +25,7 @@ function getCurrentTime() {
     setDarkMode()
   }
 }
-
+// Set the icons on the left based on the dark or light mode
 function setLightMode(){
   for(let i = 0; i < path.length; i++){
 
@@ -62,7 +63,7 @@ function setDarkMode(){
 }
 
 
-
+//Add an element to the top of the active line
 function addElement(currentActive) {
   let labelDayNight;
   // create a new div element
@@ -87,15 +88,15 @@ function addElement(currentActive) {
   parentDiv.insertBefore(newDiv, currentDiv[currentActive]);
 }
 
+//Remove element on the top of the active line when is not active
 function removeElement() {
-
-
-  // add the newly created element and its content into the DOM
   const currentDiv = document.getElementsByClassName("lineIcon");
   currentDiv[0].remove();
 
 }
 
+//The logic for line is selected and becomes active.
+//Set the website theme's color
 function clickOnLine(){
 
   let currentActive = time;
@@ -132,6 +133,7 @@ function clickOnLine(){
 
 function main() {
 
+  //Initialize a boolean array for the active/inactive lines
   for (let activeIndex = 0; activeIndex < mouseTarget.length; activeIndex++) {
     if (activeIndex != time) {
       activeArray[activeIndex] = false;
@@ -141,18 +143,13 @@ function main() {
   }
 
   getCurrentTime()
+  //Add the innerHtml to the above of the active line
   addElement(time)
-
-  // if time is currently 1pm
-  // set 12pm and 2pm stikc slightly above
-  // set all other lines to false
-
-
-
 
   //set the current line to active
   line[time].classList.add("active")
 
+  //Transition values
   let transitionString = 'transform 0.1s ease-out';
 
 
@@ -161,8 +158,7 @@ function main() {
     //create another click listener on the hour button
     //when selected change the line to active
     //reset previous active line to not active and reset its position
-
-
+    //lines next to active line to raise 50%
     mouseTarget[index].addEventListener("mouseover", (e) => {
       if (activeArray[index] === false) {
         line[index].style.transform = 'translate3d(0,0,0)'
@@ -225,6 +221,7 @@ function main() {
   }
 }
 
+/** Grabbed an external js libray to do scroll reveal */
 window.sr = ScrollReveal({
   reset: false,
   duration: 800,
