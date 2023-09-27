@@ -12,7 +12,7 @@ const circle = document.getElementsByTagName('circle');
 const mouseTarget = document.getElementsByClassName("hour");
 const line = document.getElementsByClassName("line");
 
-
+//Functions are invoke to start listening or waiting for a click
 clickOnLine()
 main();
 
@@ -27,6 +27,7 @@ function getCurrentTime() {
     setDarkMode()
   }
 }
+
 // Set the icons on the left based on the dark or light mode
 function setLightMode(){
   for(let i = 0; i < path.length; i++){
@@ -66,10 +67,10 @@ function setDarkMode(){
 
 
 
-//Add an element to the top of the active line
+//Add text to the top of the active line
 function addElement(currentActive) {
   let labelDayNight;
-  // create a new div element
+  //Create a new div element
   const newDiv = document.createElement("div");
 
   //Check if the hour is before or after 12
@@ -78,7 +79,7 @@ function addElement(currentActive) {
   //Whatever remains is the hour
   let hour = (currentActive % 12) || 12;
 
-  // and give it some content
+  //Set the label to current time
   if (currentActive >= dayTime && currentActive <= nightTime) {
     labelDayNight = `${hour}:00${amPm}`;
   }
@@ -87,11 +88,11 @@ function addElement(currentActive) {
   }
   const newContent = document.createTextNode(labelDayNight);
 
-  // add the text node to the newly created div
+  // Add the text node to the newly created div
   newDiv.classList.add('lineIcon');
   newDiv.appendChild(newContent);
 
-  // add the newly created element and its content into the DOM
+  // Add the newly created element and its content into the DOM
   const currentDiv = document.getElementsByClassName("line-holder");
   let parentDiv = currentDiv[currentActive].parentNode;
   parentDiv.insertBefore(newDiv, currentDiv[currentActive]);
@@ -101,7 +102,6 @@ function addElement(currentActive) {
 function removeElement() {
   const currentDiv = document.getElementsByClassName("lineIcon");
   currentDiv[0].remove();
-
 }
 
 //The logic for line is selected and becomes active.
@@ -110,24 +110,34 @@ function clickOnLine(){
 
   let currentActive = time;
 
+  // Loop through all hour buttons and listen for a mouse click
   for (let index = 0; index < mouseTarget.length; index++) {
     mouseTarget[index].addEventListener("click", (e) => {
+      //If the current hour button is not the active line
       if (index !== currentActive) {
-        
+        //Set previously active line to false
         activeArray[currentActive] = false
+        //Move up y-axis
         line[currentActive].style.transform = 'translate3d(0,25px,0)'
+        //Set the new active line to true
         activeArray[index] = true
+        //Remove the text above the line
         removeElement()
+        //Set the currentActive to the new index
         currentActive = index;
+        //Move down line to its original position
         line[currentActive].style.transform = 'translate3d(0,0,0)'
+        //Move up its neighbouring line that are not currently active
         if (activeArray[index + 1] === false) {
           line[index + 1].style.transform = 'translate3d(0,25px,0)'
         }
         if (activeArray[index - 1] === false) {
           line[index - 1].style.transform = 'translate3d(0,25px,0)'
         }
+        //Add the text above the line
         addElement(currentActive)
       }
+      //Set the website color theme based on the hour
       if (index >= dayTime && index <= nightTime) {
         body.classList.remove('darkMode');
         setLightMode()
@@ -167,7 +177,7 @@ function main() {
     //create another click listener on the hour button
     //when selected change the line to active
     //reset previous active line to not active and reset its position
-    //lines next to active line to raise 50%
+    //Neighbouring lines to active line need to raise 50% and lower
     mouseTarget[index].addEventListener("mouseover", (e) => {
       if (activeArray[index] === false) {
         line[index].style.transform = 'translate3d(0,0,0)'
