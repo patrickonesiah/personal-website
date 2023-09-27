@@ -543,6 +543,10 @@ body.darkMode .line {
   background: var(--ftNightColor);
 }
 
+body.darkMode .section3_projects{
+  background-color: var(--bgNightColor); 
+}
+
 
 .lineWrapper {
   display: flex;
