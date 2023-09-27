@@ -94,7 +94,7 @@ header {
   
   .headerBottom {
     flex:1;
-    margin-top: 50%;
+    margin-top: 5%;
   }
 }
 
@@ -137,15 +137,16 @@ header {
 
 @media screen and (max-width:480px){
   .intro_font_above_my_name {
-    font-size: 1.5rem;
+    font-size: 1rem;
   }
   
   .intro_font_below_my_name {
-    font-size: 1.5rem;
+    margin-top:15px;
+    font-size: 1.25rem;
   }
   
   .intro_name {
-    font-size: 1.5rem;
+    font-size: 1.25rem;
   }
   
   .intro_tagLine {
@@ -153,15 +154,11 @@ header {
   }
   
   .intro_contact {
+    margin-top: 15px;
     font-size: 0.65rem;
   }
 }
 
-
-.section3_projects {
-  padding: 50px 150px;
-  background-color: var(--bgDayColor_v3);
-}
 .sectionContent{
   flex: 1;
   display: flex;
@@ -283,6 +280,16 @@ h5 {
   color: var(--dayColor);
 }
 
+@media screen and (max-width:480px){
+  h6 {
+    font-size: 0.6rem;
+  }
+  
+  h5 {
+    font-size: 0.6rem;
+  }
+}
+
 .experienceContainer {
   display: flex;
   flex-direction: column;
@@ -327,6 +334,15 @@ h5 {
   margin: 5px 0 0 0;
 }
 
+@media screen and (max-width:480px){
+  .jobYears {
+    font-size: 0.6rem;
+  }
+  .jobTitle {
+    font-size: 0.6rem;
+  }
+}
+
 .section3_projects {
   padding: 50px 150px;
   background-color: var(--bgDayColor_v3);
@@ -346,6 +362,10 @@ h5 {
   .section3 {
     padding: 25px 50px;
     gap: 50px;
+  }
+
+  .section3_projects{
+    padding: 50px 50px;
   }
 }
 
@@ -557,6 +577,12 @@ body.darkMode .section3_projects{
   /* margin: 24px auto 0; */
   /* padding: 0 30px 70px; */
   position: relative;
+}
+
+@media screen and (max-width:480px){
+  .lineWrapper {
+    gap: 5px;
+  }
 }
 
 .hours {
