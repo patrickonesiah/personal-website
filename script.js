@@ -18,7 +18,7 @@ main();
 
 // Get current time to switch website's theme color to dark or light mode
 function getCurrentTime() {
-  if (time >= 5 && time <= 18) {
+  if (time >= dayTime && time <= nightTime) {
     body.classList.remove('darkMode');
     setLightMode()
   }
