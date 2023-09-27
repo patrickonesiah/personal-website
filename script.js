@@ -72,9 +72,10 @@ function addElement(currentActive) {
   // create a new div element
   const newDiv = document.createElement("div");
 
-  //
+  //Check if the hour is before or after 12
   let amPm = currentActive >= 12 ? 'pm' : 'am';
 
+  //Whatever remains is the hour
   let hour = (currentActive % 12) || 12;
 
   // and give it some content
