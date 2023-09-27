@@ -12,6 +12,8 @@ const line = document.getElementsByClassName("line");
 clickOnLine()
 main();
 
+
+
 function getCurrentTime() {
   if (time >= 5 && time <= 18) {
     body.classList.remove('darkMode');
@@ -222,3 +224,16 @@ function main() {
     });
   }
 }
+
+window.sr = ScrollReveal({
+  reset: false,
+  duration: 800,
+  easing: 'cubic-bezier(.694,0,.335,1)',
+  scale: 1,
+  viewFactor: 0.3,
+});
+
+ScrollReveal().reveal('.section_left');
+ScrollReveal().reveal('.section_right',{delay: 850});
+ScrollReveal().reveal('.projectTitle');
+ScrollReveal().reveal('.projectRow',{delay: 850});

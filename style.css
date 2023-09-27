@@ -107,18 +107,27 @@ header {
 .section2 {
   flex: 1;
   display: flex;
-  padding: 50px 150px;
+  padding: 50px 300px;
   gap: 25px;
   justify-content: center;
   flex-direction: row;
   background-color: var(--bgDayColor_v2);
   /*justify-content: center;
   align-items: center;*/
+  height: 2000px;
+
 }
 
-.section_aboutMe {
+.section_left {
   flex: 1;
+  text-align: right;
 }
+.section_right {
+  flex: 3;
+  text-align: left;
+}
+
+
 
 .section_skills_experience {
   flex: 1;
@@ -271,18 +280,19 @@ ul.leftSideStyle {
 }
 
 .round_portrait {
-  position: relative;
-  width: 200px;
-  height: 200px;
+  width: 120px;
+  height: 120px;
   overflow: hidden;
   border-radius: 50%;
+  float: right;
 }
 
 .round_portrait img {
   width: 120%; 
   height: auto;
-  margin-left: -25px; 
+  margin-left: -15px; 
   transform: rotate(-5deg);
+
 }
 
 .iconStyleElement {
@@ -337,10 +347,9 @@ body.darkMode .line {
   align-items: center;
   gap: 30px;
   width: 100%;
-  margin: var(--24px) auto 0;
-  padding: 0 calc(var(--24px) + 6px) calc(var(--64px) * 2);
+  margin: 24px auto 0;
+  padding: 0 calc(24px + 6px) calc(64px * 2);
   position: relative;
-  z-index: var(--zindex-content-lower-1);
 }
 
 .hours {
