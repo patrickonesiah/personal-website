@@ -87,29 +87,8 @@ header {
   text-align: center;
 }
 
-@media screen and (max-width:480px){
-  .paraStyle{
-    flex: 1;
-  }
-}
-@media screen and (max-width:768px){
-  .paraStyle {
-    flex: 1;
-  }
-}
-
 .headerBottom {
   flex:1;
-}
-
-@media screen and (max-width:480px){
-  .headerTop {
-    flex:1;
-  }
-  
-  .headerBottom {
-    flex:1;
-  }
 }
 
 .intro_font_above_my_name {
