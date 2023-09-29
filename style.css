@@ -47,10 +47,8 @@ main {
 
 header {
   display: flex;
-  justify-content: center;
   flex-direction: column;
-  padding: 50px 200px;
-  /* margin: 0 auto; */
+  padding: 0 200px;
   height: 100vh;
   background-color: var(--bgDayColor_v2);
 }
@@ -78,39 +76,39 @@ header {
 }
 
 .headerTop {
-  flex:5;
-  margin-top: 10%;
+  flex: 5;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .paraStyle {
+  flex: 1;
   text-align: center;
-  margin-bottom: 50px;
 }
 
 @media screen and (max-width:480px){
   .paraStyle{
-    margin: 25px 0;
+    flex: 1;
   }
 }
 @media screen and (max-width:768px){
   .paraStyle {
-    margin: 90px 0;
+    flex: 1;
   }
 }
 
 .headerBottom {
-  flex:2;
+  flex:1;
 }
 
 @media screen and (max-width:480px){
   .headerTop {
     flex:1;
-    margin-top: 50%;
   }
   
   .headerBottom {
     flex:1;
-    margin-top: 5%;
   }
 }
 
@@ -150,6 +148,30 @@ header {
   font-weight: 200;
 }
 
+
+@media screen and (max-width:768px){
+  .intro_font_above_my_name {
+    font-size: 1.75rem;
+  }
+  
+  .intro_font_below_my_name {
+    margin-top:15px;
+    font-size: 2rem;
+  }
+  
+  .intro_name {
+    font-size: 2rem;
+  }
+  
+  .intro_tagLine {
+    font-size: 1.4rem;
+  }
+  
+  .intro_contact {
+    margin-top: 15px;
+    font-size: 1.4rem;
+  }
+}
 
 @media screen and (max-width:480px){
   .intro_font_above_my_name {
@@ -375,6 +397,17 @@ h5 {
 }
 
 @media screen and (max-width:480px){
+  .section3 {
+    padding: 25px 50px;
+    gap: 50px;
+  }
+
+  .section3_projects{
+    padding: 50px 50px;
+  }
+}
+
+@media screen and (max-width:768px){
   .section3 {
     padding: 25px 50px;
     gap: 50px;
