@@ -176,14 +176,6 @@ header {
   }
 }
 
-.sectionContent{
-  flex: 1;
-  display: flex;
-  justify-content: flex-start;
-  gap: 50px;
-  flex-direction: column;
-}
-
 /*Section 2*/
 .section2_aboutMe {
   padding: 50px 250px;
@@ -405,10 +397,6 @@ h5 {
 
 .projectDescription {
   padding-bottom: 10px;
-}
-
-.projectLink {
-  font-size: 1rem;
 }
 
 .projectRow {
