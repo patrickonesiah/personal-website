@@ -1,7 +1,7 @@
 // Initialize varaibles, arrays and get elements
 const today = new Date();
-const time = today.getHours();
-const getMinutes = today.getMinutes();
+const currentHour = today.getHours();
+const currentMinutes = today.getMinutes();
 const dayTime = 7;
 const nightTime = 18;
 
@@ -10,27 +10,27 @@ let activeArray = [];
 const body = document.querySelector('body');
 const path = document.getElementsByTagName('path');
 const circle = document.getElementsByTagName('circle');
-const mouseTarget = document.getElementsByClassName("hour");
+const hourClass = document.getElementsByClassName("hour");
 const line = document.getElementsByClassName("line");
 
 //Functions are invoke to start listening or waiting for a click
 clickOnLine()
 main();
 
-// Get current time to switch website's theme color to dark or light mode
-function getCurrentTime() {
-  if (time >= dayTime && time <= nightTime) {
+// Set website's theme color to dark or light mode for the social media icons and website
+function setWebsiteTheme() {
+  if (currentHour >= dayTime && currentHour <= nightTime) {
     body.classList.remove('darkMode');
-    setLightMode()
+    setIconsLightMode()
   }
   else {
     body.classList.add('darkMode');
-    setDarkMode()
+    setIconsDarkMode()
   }
 }
 
 // Set the icons on the left based on the dark or light mode
-function setLightMode(){
+function setIconsLightMode(){
   for(let i = 0; i < path.length; i++){
 
     if(path[i].getAttribute('fill') === 'none'){
@@ -48,7 +48,7 @@ function setLightMode(){
   }
 }
 
-function setDarkMode(){
+function setIconsDarkMode(){
   for(let i = 0; i < path.length; i++){
 
     if(path[i].getAttribute('fill') === 'none'){
@@ -70,20 +70,13 @@ function setDarkMode(){
 
 //Add text to the top of the active line
 function addElement(currentActive) {
+
   let labelDayNight;
-  //Create a new div element
   const newDiv = document.createElement("div");
-
-  //Check if the hour is before or after 12
   let amPm = currentActive >= 12 ? 'PM' : 'AM';
-
-  //Whatever remains is the hour
   let hour = (currentActive % 12) || 12;
-
-  //Add zero infront of minutes if it is less than 10
-  let minutes = (getMinutes < 10 ? '0' : '')  + getMinutes;
+  let minutes = (currentMinutes < 10 ? '0' : '')  + currentMinutes;
   
-  //Set the label to current time
   if (currentActive >= dayTime && currentActive <= nightTime) {
     labelDayNight = `${hour}:${minutes}${amPm}`;
   }
@@ -92,11 +85,9 @@ function addElement(currentActive) {
   }
   const newContent = document.createTextNode(labelDayNight);
 
-  // Add the text node to the newly created div
   newDiv.classList.add('lineIcon');
   newDiv.appendChild(newContent);
 
-  // Add the newly created element and its content into the DOM
   const currentDiv = document.getElementsByClassName("line-holder");
   let parentDiv = currentDiv[currentActive].parentNode;
   parentDiv.insertBefore(newDiv, currentDiv[currentActive]);
@@ -112,37 +103,32 @@ function removeElement() {
 //Set the website theme's color
 function clickOnLine(){
 
-  let currentActive = time;
+  let currentActive = currentHour;
 
-  // Loop through all hour buttons and listen for a mouse click
-  for (let index = 0; index < mouseTarget.length; index++) {
-    mouseTarget[index].addEventListener("click", (e) => {
-      //If the current hour button is not the active line
-      if (index !== currentActive) {
-        //Set previously active line to false
+  for (let i = 0; i < hourClass.length; i++) {
+    hourClass[i].addEventListener("click", (e) => {
+
+      if (i !== currentActive) {
+
         activeArray[currentActive] = false
-        //Move up y-axis
+
         line[currentActive].style.transform = 'translate3d(0,25px,0)'
-        //Set the new active line to true
-        activeArray[index] = true
-        //Remove the text above the line
+
+        activeArray[i] = true
         removeElement()
-        //Set the currentActive to the new index
-        currentActive = index;
-        //Move down line to its original position
+        currentActive = i;
+  
         line[currentActive].style.transform = 'translate3d(0,0,0)'
-        //Move up its neighbouring line that are not currently active
-        if (activeArray[index + 1] === false) {
-          line[index + 1].style.transform = 'translate3d(0,25px,0)'
+  
+        if (activeArray[i + 1] === false) {
+          line[i + 1].style.transform = 'translate3d(0,25px,0)'
         }
-        if (activeArray[index - 1] === false) {
-          line[index - 1].style.transform = 'translate3d(0,25px,0)'
+        if (activeArray[i - 1] === false) {
+          line[i - 1].style.transform = 'translate3d(0,25px,0)'
         }
-        //Add the text above the line
         addElement(currentActive)
       }
-      //Set the website color theme based on the hour
-      if (index >= dayTime && index <= nightTime) {
+      if (i >= dayTime && i <= nightTime) {
         body.classList.remove('darkMode');
         setLightMode()
       }
@@ -155,88 +141,87 @@ function clickOnLine(){
 }
 
 function main() {
+  //Transition values
+  let transitionString = 'transform 0.1s ease-out';
+  let originalLinePos = 'translate3d(0,0,0)';
+  let halfLinePos = 'translate3d(0,12px,0)';
+  let belowHalfLinePos = 'translate3d(0,25px,0)';
 
   //Initialize a boolean array for the active/inactive lines
-  for (let activeIndex = 0; activeIndex < mouseTarget.length; activeIndex++) {
-    if (activeIndex != time) {
-      activeArray[activeIndex] = false;
+  for (let i = 0; i < hourClass.length; i++) {
+    if (i != currentHour) {
+      activeArray[i] = false;
     } else {
-      activeArray[activeIndex] = true;
+      activeArray[i] = true;
     }
   }
 
-  getCurrentTime()
-  //Add the innerHtml to the above of the active line
-  addElement(time)
+  setWebsiteTheme()
+  addElement(currentHour)
 
-  //set the current line to active
-  line[time].classList.add("active")
+  line[currentHour].classList.add("active")
 
-  //Transition values
-  let transitionString = 'transform 0.1s ease-out';
-
-
-  for (let index = 0; index < mouseTarget.length; index++) {
+  for (let j = 0; j < hourClass.length; j++) {
 
     //create another click listener on the hour button
     //when selected change the line to active
     //reset previous active line to not active and reset its position
     //Neighbouring lines to active line need to raise 50% and lower
-    mouseTarget[index].addEventListener("mouseover", (e) => {
-      if (activeArray[index] === false) {
-        line[index].style.transform = 'translate3d(0,0,0)'
-        line[index].style.transition = transitionString
+    hourClass[j].addEventListener("mouseover", (e) => {
+      if (activeArray[j] === false) {
+        line[j].style.transform = originalLinePos
+        line[j].style.transition = transitionString
       }
 
-      if (index == 0 && activeArray[index] === false) {
-        if (activeArray[index + 1] === false) {
-          line[index + 1].style.transform = 'translate3d(0,12px,0)'
-          line[index + 1].style.transition = transitionString
+      if (j == 0 && activeArray[j] === false) {
+        if (activeArray[j + 1] === false) {
+          line[j + 1].style.transform = halfLinePos
+          line[j + 1].style.transition = transitionString
         }
       }
 
-      if (index == (mouseTarget.length - 1) && activeArray[index] === false) {
-        if (activeArray[index - 1] === false) {
-          line[index - 1].style.transform = 'translate3d(0,12px,0)'
-          line[index - 1].style.transition = transitionString
+      if (j == (hourClass.length - 1) && activeArray[j] === false) {
+        if (activeArray[j - 1] === false) {
+          line[j - 1].style.transform = halfLinePos
+          line[j - 1].style.transition = transitionString
         }
       }
 
-      if (index > 0 && index < (mouseTarget.length - 1) && activeArray[index] === false) {
-        if (activeArray[index + 1] === false) {
-          line[index + 1].style.transform = 'translate3d(0,12px,0)'
-          line[index + 1].style.transition = transitionString
+      if (j > 0 && j < (hourClass.length - 1) && activeArray[j] === false) {
+        if (activeArray[j + 1] === false) {
+          line[j + 1].style.transform = halfLinePos
+          line[j + 1].style.transition = transitionString
         }
-        if (activeArray[index - 1] === false) {
-          line[index - 1].style.transform = 'translate3d(0,12px,0)'
-          line[index - 1].style.transition = transitionString
+        if (activeArray[j - 1] === false) {
+          line[j - 1].style.transform = halfLinePos
+          line[j - 1].style.transition = transitionString
         }
       }
     });
 
-    mouseTarget[index].addEventListener("mouseout", (e) => {
-      if (activeArray[index] === false) {
-        line[index].style.transform = 'translate3d(0,25px,0)'
+    hourClass[j].addEventListener("mouseout", (e) => {
+      if (activeArray[j] === false) {
+        line[j].style.transform = belowHalfLinePos
       }
 
-      if (index == 0 && activeArray[index] === false) {
-        if (activeArray[index + 1] === false) {
-          line[index + 1].style.transform = 'translate3d(0,25px,0)'
+      if (j == 0 && activeArray[j] === false) {
+        if (activeArray[j + 1] === false) {
+          line[j + 1].style.transform = belowHalfLinePos
         }
       }
 
-      if (index == (mouseTarget.length - 1) && activeArray[index] === false) {
-        if (activeArray[index - 1] === false) {
-          line[index - 1].style.transform = 'translate3d(0,25px,0)'
+      if (j == (hourClass.length - 1) && activeArray[j] === false) {
+        if (activeArray[j - 1] === false) {
+          line[j - 1].style.transform = belowHalfLinePos
         }
       }
 
-      if (index > 0 && index < (mouseTarget.length - 1) && activeArray[index] === false) {
-        if (activeArray[index + 1] === false) {
-          line[index + 1].style.transform = 'translate3d(0,25px,0)'
+      if (j > 0 && j < (hourClass.length - 1) && activeArray[j] === false) {
+        if (activeArray[j + 1] === false) {
+          line[j + 1].style.transform = belowHalfLinePos
         }
-        if (activeArray[index - 1] === false) {
-          line[index - 1].style.transform = 'translate3d(0,25px,0)'
+        if (activeArray[j - 1] === false) {
+          line[j - 1].style.transform = belowHalfLinePos
         }
       }
 
