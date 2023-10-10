@@ -34,10 +34,8 @@ ul{
 }
 
 main {
-  flex:20;
+  flex: 20;
   width: 100%;
-  display: flex;
-  flex-direction: column;
 }
 
 /*Header section - Introduction*/
@@ -200,8 +198,6 @@ header {
   background-color: var(--bgDayColor_v2);
   /*justify-content: center;
   align-items: center;*/
-  height: 2000px;
-
 }
 
 .section_left {
