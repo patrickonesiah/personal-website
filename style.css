@@ -656,3 +656,7 @@ body.darkMode .section3_projects{
   border-radius: 50%;
   z-index: var(--zindex-content); */
 }
+
+.projectLink {
+  display: inline;
+}
